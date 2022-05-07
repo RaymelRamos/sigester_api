@@ -1,0 +1,22 @@
+{
+  "name": "api_sigester",
+  "version": "1.0.0",
+  "description": "API for sigester. SIGESTER  is a solution based by in genieacs solution from management of CPE. This solution include  many adapters from distinc CPE firmware versions ",
+  "main": "index.js",
+  "scripts": {
+    "test": "\"echo \\\"Error: no test specified\\\" &amp;&amp; exit 1\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RaymelRamos/sigester_api.git"
+  },
+  "keywords": [
+    "SIGESTER"
+  ],
+  "author": "Raymel Ramos Guerra",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RaymelRamos/sigester_api/issues"
+  },
+  "homepage": "https://github.com/RaymelRamos/sigester_api#readme"
+}
