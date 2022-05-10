@@ -41,7 +41,8 @@ app.use(async (req, res, next) => {
       next()
     }
     else {
-      res.status(401).json(errorFormat('Unauthorized', 'Invalid credentials', "User Credentials", undefined, 'Invalid user credentials', req.id));
+        next()
+      //res.status(401).json(errorFormat('Unauthorized', 'Invalid credentials', "User Credentials", undefined, 'Invalid user credentials', req.id));
     }
   }
 });
@@ -69,6 +70,7 @@ app.use(cors());
 //Error Handler
 app.use(function (err, req, res, next) {
   const error = errorHandler(err, req);
+  console.log(error)
   if (error.name == 'Unauthorized')
     res.status(403).json(error);
   else

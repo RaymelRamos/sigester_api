@@ -16,6 +16,7 @@ const tipo_servicioRouter = require('./routes/tipo_servicioRouter')
 const usuarioRouter = require('./routes/usuarioRouter')
 const authRouter = require('./routes/authRouter')
 const acsRouter = require('./routes/acsRouter')
+const dashboardRouter = require('./routes/dashboardRouter')
 
 apiRouter.use('/bras', brasRouter)
 apiRouter.use('/div_territorial', div_territorialRouter)
@@ -31,5 +32,6 @@ apiRouter.use('/tipo_servicio', tipo_servicioRouter)
 apiRouter.use('/usuario', usuarioRouter)
 apiRouter.use('/auth', authRouter)
 apiRouter.use('/acs', acsRouter)
+apiRouter.use('/dashboard', dashboardRouter)
 
 module.exports = apiRouter

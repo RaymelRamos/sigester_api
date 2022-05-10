@@ -6,8 +6,9 @@ exports.connect = () => {
         useNewUrlParser: true,
         useUnifiedTopology: true
     })
-    .then(() => 
+    .then((x) => 
     {
+        // console.log(x.models.BrasModel.find( { deletedAt: { $exists: false } }).lean());
         console.log("Successfully connected to database");
     })
     .catch((err) => {
