@@ -28,7 +28,7 @@ const parseModemsByModels = (array) =>
 {
     console.log(array)
     let aux = array.map(x => adaptModelManufacture(x)); 
-    return _.groupBy(aux, ``);
+    return  _.countBy(aux, `fabricante`);
     //return _.groupBy(array, array['InternetGatewayDevice']['DeviceInfo']['HardwareVersion']['_value'] !== undefined ? 'InternetGatewayDevice.DeviceInfo.HardwareVersion._value' : '').map( this.adaptModelManufacture);
 }
 
