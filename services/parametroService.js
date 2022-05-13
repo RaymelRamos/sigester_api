@@ -82,7 +82,8 @@ var update = async (id, body, id_company) => {
         item.set({
             param_name: body.param_name ? body.param_name : item.param_name,
             param_value: body.param_value ? body.param_value : item.param_value,
-            data_type: body.data_type ? body.data_type : item.data_type
+            data_type: body.data_type ? body.data_type : item.data_type,
+            model_id: body.model_id ? body.model_id : item.model_id,
         });
         await item.save();
         item = await parametroModel.findOne(

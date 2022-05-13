@@ -1,22 +1,42 @@
 const { GET, POST, PUT, DELETE } = require('../repositories/acs')
-const { parseModemsForPieGraph } = require('../adapters/dashboardAdapter')
+const { concatAllParams } = require('../adapters/acsAdapter')
 
 
-//eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJheW1lbC5yYW1vcyIsIm1vZHVsZSI6IkZXQSIsInJvdXRlcyI6WyJfX2FsbF9fIl0sImlhdCI6MTY1MDY0MTc3MiwiZXhwIjoxNjUwNjQxODU4fQ.ZmbTLunJXbRmWkhx5MEGWICbeIr2-6QBDACS7QQ4RJA
-const getModemsForPieGraph = (url) =>
+/**
+ * @description Get all params from a specific partner
+ * @param {string} partner
+ * @returns {Promise<string[]>}
+ * @memberof acsService
+ * Device Part
+ * Methods from devices in acs
+ *  
+ **/
+const getAllListParamsService = (url, query) =>
     new Promise((resolve, reject) => {
-        GET(`${url}/devices?projection=_lastInform`)
-            .then((response) => {
-                console.log(response)
 
-                resolve(parseModemsForPieGraph(response.data))
+        GET(`${url}/devices?query=${query.query}`)
+            .then((response) => {
+                resolve(concatAllParams(response.data))
             })
             .catch((error) => {
-                console.log(error)
                 reject(error);
             })
     })
 
+const getFindParamsService = (url, req) => {
+    console.log(`${url}/devices?${req.query}`)
+    console.log(req.params)
+    return new Promise((resolve, reject) => {
+        GET(`${url}/devices?${req.query}`)
+            .then((response) => {
+                resolve(response.data)
+            })
+            .catch((error) => {
+                reject(error);
+            }
+            )
+    }
+    )
+}
 
-
-module.exports = { getModemsForPieGraph }
+module.exports = { getAllListParamsService, getFindParamsService }

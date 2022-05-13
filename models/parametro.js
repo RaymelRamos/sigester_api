@@ -8,6 +8,7 @@ const parametroSchema = new Schema(
         param_name: { type: String, required: true },
         param_value: { type: String, required: true },
         data_type: { type: String, default: "", required: true },
+        model_id: { type: String, required: true },
         createdAt: Date,
         updatedAt: Date,
         deletedAt: Date
