@@ -41,7 +41,7 @@ app.use(async (req, res, next) => {
       next()
     }
     else {
-        next()
+      next()
       //res.status(401).json(errorFormat('Unauthorized', 'Invalid credentials', "User Credentials", undefined, 'Invalid user credentials', req.id));
     }
   }
