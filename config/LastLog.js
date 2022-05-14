@@ -39,7 +39,7 @@ var resLog = function (req,res, next) {
             logs.warnLog(req,res,res.statusCode, res.statusMessage, validJSON(body))
         }
 
-        defaultEnd.apply(res, restArgs);
+        defaultEnd.apply(res, restArgs); // call the default end
     };
 
     next();
