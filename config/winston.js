@@ -1,5 +1,6 @@
 var winston = require('winston');
 const DailyRotateFile = require('winston-daily-rotate-file');
+const LokiTransport = require("winston-loki");
 
 // define the custom settings for each transport (file, console)
 var options = {
@@ -13,7 +14,7 @@ var options = {
 // instantiate a new Winston Logger with the settings defined above
 const rotateTransport = new DailyRotateFile({
     filename: './logs/%DATE%.log',
-    datePattern: 'YYYY-MM-DD-HH',
+    datePattern: 'YYYY-MM-DD',
     zippedArchive: true,
     maxSize: '20m',
     maxFiles: '14d',
@@ -22,6 +23,9 @@ const rotateTransport = new DailyRotateFile({
 var logger = winston.createLogger({
     transports: [
         rotateTransport,
+        new LokiTransport({
+            host: "http://192.168.8.100:3100"
+          })
         // new winston.transports.File({ filename: 'logs/all.log' }),
         // new winston.transports.Console(options.console),
         // new winston.transports.File({ filename: 'logs/error.log', level: 'error' }),

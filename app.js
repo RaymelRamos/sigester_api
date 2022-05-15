@@ -38,17 +38,26 @@ app.use(async (req, res, next) => {
   else {
     req.AUTH = req.header("Authorization")
     if (req.AUTH) {
+      req.acs_endpoint = await get_endpoint(req)
       next()
     }
     else {
+      // this line is temporaly
+      req.acs_endpoint = await get_endpoint(req)
       next()
       //res.status(401).json(errorFormat('Unauthorized', 'Invalid credentials', "User Credentials", undefined, 'Invalid user credentials', req.id));
     }
   }
 });
 
-// Save Image
-
+var get_endpoint = async (req) => {
+  switch(req.header('x-app-module'))
+   {
+     case 'FWA': return process.env.FWA_ACS;break;
+     case 'Residencial': return process.env.RESIDENCIAL_ACS;break;
+     case 'Empresarial': return process.env.EMPRESARIAL_ACS;break;
+   }
+}
 
 app.get('/', (req, res) => { res.send('Sigester client microservice') });
 

@@ -1,4 +1,4 @@
-const { GET, POST, PUT, DELETE } = require('../repositories/acs')
+const { GET } = require('../repositories/acs')
 const { concatAllParams } = require('../adapters/acsAdapter')
 
 
@@ -13,7 +13,6 @@ const { concatAllParams } = require('../adapters/acsAdapter')
  **/
 const getAllListParamsService = (url, query) =>
     new Promise((resolve, reject) => {
-
         GET(`${url}/devices?query=${query.query}`)
             .then((response) => {
                 resolve(concatAllParams(response.data))
@@ -23,11 +22,9 @@ const getAllListParamsService = (url, query) =>
             })
     })
 
-const getFindParamsService = (url, req) => {
-    console.log(`${url}/devices?${req.query}`)
-    console.log(req.params)
+const getFindParamsService = (url, query) => {
     return new Promise((resolve, reject) => {
-        GET(`${url}/devices?${req.query}`)
+        GET(`${url}/devices?${query}`)
             .then((response) => {
                 resolve(response.data)
             })

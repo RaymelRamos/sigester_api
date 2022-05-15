@@ -18,6 +18,7 @@ const authRouter = require('./routes/authRouter')
 const acsRouter = require('./routes/acsRouter')
 const dashboardRouter = require('./routes/dashboardRouter')
 const parametrizationRouter = require('./routes/parametrizationRouter')
+const deviceRouter = require('./routes/deviceRouter')
 
 apiRouter.use('/bras', brasRouter)
 apiRouter.use('/div_territorial', div_territorialRouter)
@@ -35,5 +36,6 @@ apiRouter.use('/auth', authRouter)
 apiRouter.use('/acs', acsRouter)
 apiRouter.use('/dashboard', dashboardRouter)
 apiRouter.use('/parametrization', parametrizationRouter)
+apiRouter.use('/devices', deviceRouter)
 
 module.exports = apiRouter

@@ -91,7 +91,7 @@ const fieldParser = (key, fields) => ({
 })
 
 const errorHandler = function (error, req) {
-    console.log(`este es el error: ${error.message}`)
+    console.log(error)
     if (error instanceof mongoose.Error)
         return mongoErrorCather(error, req.id);
     if (error.isAxiosError || (error.response && error.response.status >= 400)) {
