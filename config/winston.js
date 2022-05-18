@@ -5,7 +5,7 @@ const LokiTransport = require("winston-loki");
 // define the custom settings for each transport (file, console)
 var options = {
     console: {
-        level: '',
+        level: 'info',
         handleExceptions: true,
         json: false,
         colorize: true,
@@ -24,7 +24,7 @@ var logger = winston.createLogger({
     transports: [
         rotateTransport,
         new LokiTransport({
-            host: "http://192.168.8.100:3100"
+            host: "http://192.168.8.101:3100"
           })
         // new winston.transports.File({ filename: 'logs/all.log' }),
         // new winston.transports.Console(options.console),

@@ -32,8 +32,18 @@ const parseModemsByModels = (array) =>
     //return _.groupBy(array, array['InternetGatewayDevice']['DeviceInfo']['HardwareVersion']['_value'] !== undefined ? 'InternetGatewayDevice.DeviceInfo.HardwareVersion._value' : '').map( this.adaptModelManufacture);
 }
 
+const adaptDVT = (value) => ({
+    data: value.VirtualParameters.InfoClient._value
+})
+
+const adaptClient = (value) => (
+    JSON.parse(JSON.parse(value.data).value[0])
+)
+
 module.exports =
 {
     parseModemsForPieGraph,
-    parseModemsByModels
+    parseModemsByModels,
+    adaptDVT,
+    adaptClient
 }

@@ -1,0 +1,25 @@
+version: "2.2"
+services:
+  sigester_api:
+      image: sigester_api:1.0
+      restart: always
+      container_name: sigester_api  
+      environment:
+          - PORT=3002
+          - DATABASE_URL=mongodb://localhost:27017/api_sigester
+          - SIGESTER_API=http://localhost:3000/api/
+          - LOG_PATH=./logs/api/v1/logs
+          - LOG_GROUP_NAME=API_SIGESTER
+          - LOG_GROUP_STREAM=RAYMEL_PROD
+          - LOKI_LOGS_URL=http://192.168.8.101:3100/
+          - LDAP_SERVER=ds.etecsa.cu
+          - TOKEN_SECRET=Vnc=-^;pO"=!lUFZd#Y)mElDPv<qE|"NlV2}TD:5AavKR^Uh#GFr&n]C;cM|93q
+          - TOKEN_VALID=86400
+          - RESIDENCIAL_ACS=http://10.101.1.4:7557
+          - FWA_ACS=http://10.101.1.5:7557
+          - EMPRESARIAL_ACS=http://localhost:7557
+      volumes:
+           - "./data:/usr/src/app"
+        
+      ports:
+           - "3002:3002"
