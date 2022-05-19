@@ -9,6 +9,11 @@ require("dotenv").config();
 const jwt = require('jsonwebtoken');
 const bodyParser = require('body-parser');
 
+// Swagger support
+const swaggerJSDoc = require('swagger-jsdoc')
+const swaggerUi = require('swagger-ui-express');
+const swaggerDefinition = require('./config/swagger');
+
 require("./config/database").connect();
 
 const apiRouter = require('./apiRouter')
@@ -51,19 +56,34 @@ app.use(async (req, res, next) => {
 });
 
 var get_endpoint = async (req) => {
-  switch(req.header('x-app-module'))
-   {
-     case 'FWA': return process.env.FWA_ACS;break;
-     case 'Residencial': return process.env.RESIDENCIAL_ACS;break;
-     case 'Empresarial': return process.env.EMPRESARIAL_ACS;break;
-   }
+  switch (req.header('x-app-module')) {
+    case 'FWA': return process.env.FWA_ACS; break;
+    case 'Residencial': return process.env.RESIDENCIAL_ACS; break;
+    case 'Empresarial': return process.env.EMPRESARIAL_ACS; break;
+  }
 }
+
+// Swagger support
+const options = {
+  swaggerDefinition,
+  "apis": [
+    "./routes/*"
+]
+}
+const swaggerSpec = swaggerJSDoc(options)
+app.get('/swagger.json', (req, res) => 
+{
+  res.setHeader('Content-Type', 'application/json')
+  res.send(swaggerSpec)
+})
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.get('/', (req, res) => { res.send('Sigester client microservice') });
 
 app.use('/api/v1/', apiRouter);
 
-// // catch 404 and forward to error handler
+
+// catch 404 and forward to error handler
 // app.use(function (req, res, next) {
 //   next(createError(404));
 // });

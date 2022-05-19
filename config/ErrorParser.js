@@ -91,6 +91,7 @@ const fieldParser = (key, fields) => ({
 })
 
 const errorHandler = function (error, req) {
+    console.log('error')
     console.log(error)
     if (error instanceof mongoose.Error)
         return mongoErrorCather(error, req.id);

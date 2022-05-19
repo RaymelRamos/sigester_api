@@ -1,0 +1,26 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "API Swagger",
+        "version": "1.0.0",
+        "title": "SIGESTER API",
+        "contact": {
+            "name": "Raymel Ramos Guerra",
+            "email": "abc@gmail.com"
+        },
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        }
+    },
+    "schemes": ["http"],
+    "host": "10.101.1.7:3002",
+    "basePath": "/api/v1",
+    "securityDefinitions": {
+        "Bearer": {
+            "type": "Bearer",
+            "name": "Authorization",
+            "in": "header"
+        }
+    }
+}
