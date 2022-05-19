@@ -188,14 +188,14 @@ const getFaultsController = async (req, res) => {
 
 
 module.exports = { 
-    getDevicesController, 
-    postDeviceController, 
-    deleteDeviceController, 
+    getDevicesController,
+    getFaultsController,  
     getTasksController, 
-    postTaskController, 
+    postTagController,
+    postDeviceController,
+    postTaskController,
     deleteTasksController, 
     deleteFaultController, 
-    deleteTagsController, 
-    getFaultsController, 
-    postTagController 
+    deleteTagsController,
+    deleteDeviceController
 }
