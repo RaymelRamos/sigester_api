@@ -19,6 +19,7 @@ const acsRouter = require('./routes/acsRouter')
 const dashboardRouter = require('./routes/dashboardRouter')
 const parametrizationRouter = require('./routes/parametrizationRouter')
 const deviceRouter = require('./routes/deviceRouter')
+const provisionRouter = require('./routes/provisionRouter')
 
 apiRouter.use('/bras', brasRouter)
 apiRouter.use('/div_territorial', div_territorialRouter)
@@ -37,5 +38,6 @@ apiRouter.use('/acs', acsRouter)
 apiRouter.use('/dashboard', dashboardRouter)
 apiRouter.use('/parametrization', parametrizationRouter)
 apiRouter.use('/devices', deviceRouter)
+apiRouter.use('/provision', provisionRouter)
 
 module.exports = apiRouter
