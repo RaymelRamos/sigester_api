@@ -8,4 +8,8 @@ const deletePresetService = async (url, name_preset) => {
     return await DELETE(`${url}/presets/${name_preset}`, null)
 }
 
-module.exports = { putPresetService, deletePresetService }
+const getPresetService = async (url) => {
+    return await GET(`${url}/presets/`, null)
+}
+
+module.exports = { putPresetService, deletePresetService, getPresetService }
