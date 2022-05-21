@@ -52,16 +52,19 @@ function recursive(list, item, prefix) {
 const adaptKeyValue = (arrayItem) =>
 (
     {
-        key: arrayItem.split('_value')[0].slice(0, -1),
-        value: arrayItem.split('_value')[1].slice(1)
+        key: arrayItem.includes('_value') ? arrayItem.split('_value')[0].slice(0, -1) : '',// arrayItem.includes('_object') ? arrayItem.split('_object')[0].slice(0, -1) : '',
+        value: arrayItem.includes('_value') ? arrayItem.split('_value')[1].slice(1) : '' // arrayItem.includes('_object') ? '_object' : ''
     }
 )
 
 
 const concatAllParams = (arrayItem) => {
     let list = [];
+    console.log(arrayItem)
+    if(arrayItem.length == 0)
+        return []
     recursive(list, arrayItem[0], '');
-    return list.filter(x => x.includes('_value')).map(adaptKeyValue);
+    return _.uniqBy(list.filter(x => x.includes('_value')).map(adaptKeyValue), 'key'); //
 }
 
 module.exports = { concatAllParams }

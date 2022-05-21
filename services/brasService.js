@@ -63,7 +63,6 @@ var create = async (body) => {
     let item = new brasModel(body);
     item.createdAt = Date.now();
     item.uuid = uuidv5(`${item.name}`, uuidv4());
-    item.id_company = item.id_company;
     await item.save();
     let payload = item
     payload.uuid = item.uuid

@@ -3,8 +3,8 @@ const { Schema } = require('mongoose')
 
 const tipoServicioSchema = new Schema(
     {
-        uuid: {type: String, required: true},
-        nombre_tipo_servicio: { type: String, required: true},
+        nombre: { type: String, required: true},
+        value: { type: String, required: true},
         createdAt: Date,
         updatedAt: Date,
         deletedAt: Date

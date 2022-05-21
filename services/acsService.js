@@ -13,6 +13,7 @@ const { concatAllParams } = require('../adapters/acsAdapter')
  **/
 const getAllListParamsService = (url, query) =>
     new Promise((resolve, reject) => {
+        console.log(`${url}/devices?query=${query.query}`)
         GET(`${url}/devices?query=${query.query}`)
             .then((response) => {
                 resolve(concatAllParams(response.data))

@@ -1,5 +1,6 @@
 const { DATABASE_URL } = process.env
 const mongoose = require('mongoose') 
+const repo = require('./repo')
 
 exports.connect = () => {
     mongoose.connect(DATABASE_URL, {
@@ -8,8 +9,10 @@ exports.connect = () => {
     })
     .then((x) => 
     {
-        // console.log(x.models.BrasModel.find( { deletedAt: { $exists: false } }).lean());
-        console.log("Successfully connected to database");
+        console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
+        // INIT DATABASE
+        repo.init();
+        
     })
     .catch((err) => {
         console.log("Database connection failed. Exiting now")

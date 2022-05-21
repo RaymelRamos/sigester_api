@@ -1,4 +1,4 @@
-const parametroModel = require('../models/bras')
+const parametroModel = require('../models/parametro')
 const { v5: uuidv5, v4: uuidv4 } = require('uuid');
 
 var getAll = async (query) => {
@@ -80,10 +80,13 @@ var update = async (id, body, id_company) => {
         return null;
     } else {
         item.set({
+            _writable: body._writable ? body._writable : item._writable,
+            data_type: body.data_type ? body.data_type : item.data_type,
+            model_oui: body.model_oui ? body.model_oui : item.model_oui,
+            model_product_class: body.model_product_class ? body.model_product_class : item.model_product_class,
             param_name: body.param_name ? body.param_name : item.param_name,
             param_value: body.param_value ? body.param_value : item.param_value,
             data_type: body.data_type ? body.data_type : item.data_type,
-            model_id: body.model_id ? body.model_id : item.model_id,
         });
         await item.save();
         item = await parametroModel.findOne(

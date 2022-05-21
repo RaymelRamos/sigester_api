@@ -5,6 +5,7 @@ const nivelAccesoSchema = new Schema(
     {
         uuid: {type: String, required: true},
         nombre: { type: String, required: true},
+        descripcion: { type: String},
         createdAt: Date,
         updatedAt: Date,
         deletedAt: Date

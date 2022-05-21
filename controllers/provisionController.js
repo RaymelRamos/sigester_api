@@ -1,4 +1,4 @@
-const provisionService = require('../services/provisionsService');
+const provisionService = require('../services/provisionServices')
 const errorParser = require('../config/ErrorParser')
 
 const putProvisionController = async (req, res) => {
